@@ -5,7 +5,6 @@ def call(Map config=[:]) {
         echo config.message
         echo 'Branch:'
         echo Constants.BRANCH
-
     } else {
         echo Constants.EMAIL_MESSAGE
         echo config.message
