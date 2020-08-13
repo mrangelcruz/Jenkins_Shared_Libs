@@ -1,5 +1,14 @@
 import org.constants.Constants
 def call(Map config=[:]) {
+    
+    stage("Notify") {
+        if (config.deploy) {
+            bat label: '', script: '''echo [INFO] --- NOTIFY ---'''
+        }
+    }
+
+
+
     if (config.type == "slack") {
         echo Constants.SLACK_MESSAGE
         echo config.message
