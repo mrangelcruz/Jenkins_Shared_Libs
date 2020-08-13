@@ -1,4 +1,4 @@
-import org.example.constants
+import org.constants.Constants
 def call(Map config=[:]) {
     if (config.type == "slack") {
         echo Constants.SLACK_MESSAGE
