@@ -1,14 +1,14 @@
 def call(Map config=[:], Closure body) {
     node {
-        stage("Install") {
-            bat label: '', script: '''npm install'''
+        stage("check repo") {
+            bat label: '', script: '''echo [INFO] --- CHECK REPO ---'''
         }
-        stage("Test") {
-            bat label: '', script: '''npm test'''
+        stage("build") {
+            bat label: '', script: '''echo [INFO] --- BUILD ---'''
         }
         stage("Deploy") {
             if (config.deploy) {
-                bat label: '', script: '''npm publish'''
+                bat label: '', script: '''echo [INFO] --- DEPLOY ---'''
             }
         }
         body()
