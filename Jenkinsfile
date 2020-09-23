@@ -1,4 +1,4 @@
-node {
+node('compile01') {
     echo 'Gathering code from version control'
     git branch: '${branch}', url: 'https://github.com/mrangelcruz/Jenkins_Shared_Libs'
 }
