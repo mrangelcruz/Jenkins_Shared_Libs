@@ -1,9 +1,22 @@
-@Library('jenkins-shared-library@master') _
 node {
-    env.NODEJS_HOME = "${tool 'node'}"
-    env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-    
-    buildJavascriptApp deploy: false, {
-        notify type: "slack", message: "Build succeeded"
+    echo 'Gathering code from version control'
+    git branch: '${branch}', url: 'https://github.com/mrangelcruz/Jenkins_Shared_Libs'
+}
+stage('Build'){
+    try{
+        echo "Building..."
+    }catch(ex){
+        echo 'something went wrong'
+        echo ex.toString
+        currentBuild.result = 'FAILURE'
     }
+    finally{
+        echo "cleanup..."
+    }
+}
+stage('Test'){
+    echo 'Testing...'
+}
+stage('Deploy'){
+    echo 'Deploying'
 }
